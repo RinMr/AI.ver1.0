@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('/static/photo/ホーム背景.png');
+    background-size: cover;
+}
+.container {
+    text-align: center;
+}
+h1 {
+    color: #333;
+    margin-bottom: 1em;
+}
+button {
+    background-color: rgb(0, 140, 100);
+    color: white;
+    border: none;
+    padding: 0.5em 1.5em;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: green;
+}

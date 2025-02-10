@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/decision.css') }}">
+    <title>識別結果</title>
+</head>
+<body>
+    <div class="full-page">
+        <label class="home-button">
+            <a href="{{ url_for('home') }}" class="home">
+                <img src="{{ url_for('static', filename='photo/ホームアイコン.png') }}" alt="ホーム">
+            </a>
+        </label>
+
+        <div class="probability">
+            <h3>{{ message }}</h3>
+        </div>
+
+        <div class="select-picture">
+            {{ image | safe }}
+        </div>
+
+        <div class="boxtext">
+            <p>
+                {% for label, prob in predictions %}
+                <strong>{{ label }}</strong>: {{ "%.1f"|format(prob) }}%<br>
+                {% endfor %}
+            {% if emotion_details and top_label %}<br>
+                    {% for emotion, confidence in emotion_details.items() %}
+                        {% if top_label.lower() in emotion.lower() %}
+                            <strong>{{ emotion }}</strong>: {{ confidence|round(1) }}%</br>
+                        {% endif %}
+                    {% endfor %}
+                </p>
+            {% endif %}
+        </div>
+    </div>
+    <label class="history">
+        <a href="{{ url_for('history') }}">
+            <img src="{{ url_for('static', filename='photo/履歴アイコン.png') }}" alt="履歴">
+        </a>
+    </label>
+    <script>
+        const TIMEOUT_URL = "{{ timeout_url | safe }}";
+    </script>
+    <script src="{{ url_for('static', filename='js/decision.js') }}"></script>
+</body>
+</html>

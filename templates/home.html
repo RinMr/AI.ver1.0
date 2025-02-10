@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>画像をアップロード</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+<body>
+    {% if just_logged_in %}
+    <div id="animatedElement" class="anim-box">
+        <img src="{{ url_for('static', filename='photo/title.png') }}" alt="Title-Image">
+    </div>
+    {% endif %}
+    <div class="full-page">
+        <form method="POST" action="{{ url_for('upload_file') }}" enctype="multipart/form-data" style="display: flex; flex-direction: column; align-items: center;">
+            <div class="parent">
+                <label class="select">
+                    <input type="file" name="file" accept="image/*">
+                    <span>クリックor<br>ドロップで<br>画像を選択</span>
+                    <div class="preview-img"></div>
+                </label>
+            </div>            
+            <label class="decision">
+                <img src="{{ url_for('static', filename='photo/決定.png') }}" alt="決定">
+                <input type="submit" id="submitBtn" value="アップロード" style="margin-top: 10px;" disabled>
+            </label>            
+            <label class="cancellation">
+                <img src="{{ url_for('static', filename='photo/取消.png') }}" alt="キャンセル">
+                <input type="reset" id="clearbtn" value="選択キャンセル" onclick="clearFile(event)" style="display: none;">
+            </label>
+            <label class="history">
+                <a href="{{ url_for('history') }}">
+                    <img src="{{ url_for('static', filename='photo/履歴アイコン.png') }}" alt="履歴">
+                </a>
+            </label>
+            <label class="logout-button">
+                <img src="{{ url_for('static', filename='photo/ログアウトアイコン.png') }}" id="logoutBtn" alt="ログアウト">
+            </label>
+            <label class="dog">
+                <img src="{{ url_for('static', filename='photo/ワンちゃん.png') }}" alt="犬">
+            </label>
+            <label class="cat">
+                <img src="{{ url_for('static', filename='photo/ネコちゃん.png') }}" alt="猫">
+            </label>
+        </form>
+    </div>
+    <script>const TIMEOUT_URL = "{{ timeout_url | safe }}";</script>
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+</body>
+</html>

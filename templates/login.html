@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+    <title>ログイン</title>
+</head>
+<body>
+    <div class="full-page">
+        <h1>ログイン</h1>
+        {% if error %}
+        <div id="error-message" style="color: red; margin-bottom: 0vw;">
+            {{ error }}
+        </div>
+        {% endif %}
+        <form action="{{ url_for('login') }}" method="POST">
+            <label for="username">名前</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">パスワード</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">ログイン</button>
+        </form>
+    </div>
+    <p><a href="{{ url_for('register') }}">新規登録はこちら</a></p>
+</body>
+</html>

@@ -1,0 +1,181 @@
+body, html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  touch-action: manipulation;
+}
+
+#animatedElement {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(246, 252, 163, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 1.5s, transform 0.5s;
+  z-index: 1;
+  pointer-events: auto;
+}
+
+#animatedElement img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.full-page {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 0;
+  position: relative;
+  background-image: url('/static/photo/ホーム背景.png');
+  background-size: cover;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.anim-box.fadeout.is-animated {
+  animation: fadeOut 1.0s cubic-bezier(0.8, 1, 0.68, 1) forwards;
+  animation-delay: 1s;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.select {
+  display: inline-block;
+  padding: 205px;
+  color: black;
+  transition: 0.5s;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(255, 255, 255);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: -20px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.select input {
+  display: none;
+}
+
+.select span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  font-size: 200%;
+  font-family: Arial, sans-serif;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0.5;
+}
+
+.select.drag-over {
+  border-color: #4caf50;
+  background-color: #f0fff0;
+}
+
+.decision {
+  position: fixed;
+  display: inline-block;
+  transition: 0.5s;
+  top: 69.4%;
+  right: 16%;
+  cursor: pointer;
+}
+
+.decision input {
+  display: none;
+}
+
+.cancellation {
+  position: fixed;
+  display: inline-block;
+  transition: 0.5s;
+  top: 69.4%;
+  right: 71%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.history {
+  position: fixed;
+  display: inline-block;
+  transition: 0.5s;
+  top: 8%;
+  right: 88%;
+  opacity: 0.8;
+}
+
+.preview-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.preview-img img {
+  left: -50%;
+  max-width: 480px;
+  max-height: 480px;
+}
+
+.logout-button {
+  position: fixed;
+  display: inline-block;
+  top: 10%;
+  right: 3%;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.dog {
+  position: fixed;
+  display: inline-block;
+  top: 55.1%;
+  right: 77%;
+  width: 5%;
+}
+
+.cat {
+  position: fixed;
+  display: inline-block;
+  top: 58.2%;
+  right: 21%;
+  width: 5%;
+}
+
+.error-message {
+  position: absolute;
+  display: inline-block;
+  bottom: 38%;
+  left: 44%;
+}

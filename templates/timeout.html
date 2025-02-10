@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/timeout.css') }}">
+    <title>タイムアウト</title>
+</head>
+<body>
+    <div class="container">
+        <h1>操作受付時間を過ぎました。</h1>
+        <form action="{{ url_for('login') }}">
+            <button type="submit">ログインページに戻る</button>
+        </form>
+    </div>
+</body>
+</html>

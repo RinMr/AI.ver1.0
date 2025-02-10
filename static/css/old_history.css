@@ -1,0 +1,252 @@
+body, html {
+  width: 100vw;
+  height: 100vw;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-page {
+  width: 100vw;
+  height: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: url('/static/photo/過去履歴背景.png');
+  background-size: cover;
+}
+
+.home-button {
+  position: fixed;
+  display: inline-block;
+  top: 20vw;
+  right: 1vw;
+  cursor: pointer;
+  width: 10vw;
+}
+
+.history-button {
+  position: fixed;
+  display: inline-block;
+  top: 20vw;
+  right: 87vw;
+  cursor: pointer;
+  width: 10vw;
+}
+
+.home {
+  font-size: 200%;
+  font-weight: bold;
+  padding: 10px;
+  opacity: 0.7;
+  text-decoration: none;
+}
+
+.history-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 80%;
+}
+
+.history-entry {
+  width: 300px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: rgba(249, 249, 249, 0.01);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.boxpersecond {
+  text-align: center;
+  font-size: 18px;
+  padding: 10px;
+  width: 200px;
+  height: 50px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.boxtext {
+  text-align: center;
+  font-size: 20px;
+  padding: 10px;
+  width: 200px;
+  height: 50px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.history-image {
+  max-width: 200px;
+  max-height: 200px;
+  border: 5px solid black;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal.show {
+  display: block;
+  opacity: 1;
+}
+
+.modal-content {
+  background-color: white;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 35%;
+  max-height: 80vh;
+  text-align: left;
+  border-radius: 8px;
+  animation: fadeIn 0.3s ease;
+  overflow-y: auto;
+  font-size: 20px;
+}
+
+.modal-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+#modal .modal-button {
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#modal .modal-button:hover {
+  background-color: #0056b3;
+}
+
+#modal .modal-button:active {
+  background-color: #004085;
+}
+
+@keyframes fadeIn {
+  from {
+      transform: scale(0.8);
+      opacity: 0;
+  }
+  to {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#modalProbs {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+#modalProbs .labels-column,
+#modalProbs .emotions-column {
+  flex: 1;
+  min-width: 200px;
+  margin: 10px;
+}
+
+#modalProbs p {
+  font-size: 20px;
+  line-height: 1.6;
+  margin: 5px 0;
+}
+
+#modal .modal-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.date-filter {
+  position: fixed;
+  display: inline-block;
+  top: 4vw;
+  right: 0vw;
+  cursor: pointer;
+  width: 10vw;
+  font-size: 1.2vw;
+  color: #faf8f8;
+}
+
+.date-filter select {
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+}
+
+.delete-button {
+  background-color: rgba(249, 249, 249, 0.01);
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  position: relative;
+  left: 450%;
+}
+
+.delete-button:hover {
+  background-color: rgba(249, 249, 249, 0.01);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}

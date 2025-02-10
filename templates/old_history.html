@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/old_history.css') }}">
+    <title>過去の履歴</title>
+</head>
+<body>   
+<div class="date-filter">
+    <label for="dateSelect">日付を選択:</label>
+    <select id="dateSelect" onchange="filterByDate()">
+        <option value="">すべての画像</option>
+        {% for date in unique_dates %}
+            <option value="{{ date }}">{{ date }}</option>
+        {% endfor %}
+    </select>
+</div>
+<div class="full-page">
+    {% if old_history %}
+    <div class="history-container">
+        {% for image in old_history[:16] %}
+            <div class="history-entry" 
+                data-image="{{ url_for('uploaded_file', filename=image.filename) }}" 
+                data-message="{{ image.message }}" 
+                data-timestamp="{{ image.timestamp }}" 
+                data-labels="{{ image.labels }}" 
+                data-probs="{{ image.probs }}" 
+                data-emotions='{{ image.emotions }}' 
+                data-image-id="{{ image.id }}">
+
+                <form action="{{ url_for('old_history') }}" method="POST" class="delete-form">
+                    <input type="hidden" name="image_id" value="{{ image.id }}">
+                    <button type="submit" class="delete-button">✖</button>
+                </form>
+                <div class="boxpersecond">
+                    <p>{{ image.message }}</p>
+                </div>
+                
+                <div class="boxtext">
+                    {% set labels = json.loads(image.labels) %}
+                    {% set probs = json.loads(image.probs) %}
+                    {% set max_prob_index = probs.index(max(probs)) %}
+                    <p>{{ labels[max_prob_index] }}: {{ probs[max_prob_index]|round(1) }}%</p>
+                </div>                
+                <div class="box">
+                    <div class="image-wrapper" data-bs-toggle="modal" data-bs-target="#imageModal-{{ image.id }}">
+                        <img src="{{ url_for('uploaded_file', filename=image.filename) }}" alt="アップロード画像" width="200" height="200">
+                    </div>
+            </div>
+        </div>
+            <div class="modal fade" id="imageModal-{{ image.id }}" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">詳細</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="{{ url_for('uploaded_file', filename=image.filename) }}" alt="画像詳細" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <label class="history-nothing">
+        <img src="{{ url_for('static', filename='photo/履歴ない.png') }}" alt="履歴ないwow">
+    </label>
+    {% endif %}
+    <label class="history-button">
+        <a href="{{ url_for('history') }}" class="home">
+            <img src="{{ url_for('static', filename='photo/戻るアイコン.png') }}" alt="履歴">
+        </a>
+    </label>
+    <label class="home-button">
+        <a href="{{ url_for('home') }}" class="home">
+            <img src="{{ url_for('static', filename='photo/ホームアイコン.png') }}" alt="ホーム">
+        </a>        
+    </label>
+
+    <label class="delete-all-container">
+        <input type="button" id="deleteAllButton" 
+            data-delete-all-url="{{ url_for('history') }}" 
+            data-delete-single-url="{{ url_for('old_history') }}"
+            value="選択キャンセル" 
+            style="display: none;">
+    </label>
+    
+</div>
+<div id="modal" class="modal hidden">
+    <div class="modal-content">
+        <span id="closeModal" class="close">&times;</span>
+        <div id="modalProbs">
+        </div>
+        <button id="sortByLabelButton" class="modal-button">ラベル順に並べ替え</button>
+        <p id="modalTimestamp" style="font-size: 12px;"></p>
+    </div>
+</div>
+
+<div id="deleteAllModal" class="modal">
+    <div class="modal-content">
+        <p>すべての履歴を削除しますか？</p>
+        <button id="confirmDelete" class="modal-button">削除</button>
+        <button id="cancelDelete" class="modal-button">キャンセル</button>
+    </div>
+</div>
+<script>const TIMEOUT_URL = "{{ timeout_url | safe }}";</script>
+<script src="{{ url_for('static', filename='js/old_history.js') }}"></script>
+</body>
+</html>

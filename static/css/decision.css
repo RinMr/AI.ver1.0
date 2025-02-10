@@ -1,0 +1,119 @@
+body, html {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  background-image: url('/static/photo/結果背景.png');
+  background-size: cover;
+}
+
+.home {
+  position: fixed;
+  font-size: 200%;
+  font-weight: bold;
+  display: inline-block;
+  top: 3.5vw;
+  right: 3vw;
+  width: 10vw;
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.home-button {
+  position: fixed;
+  display: inline-block;
+  top: 20vw;
+  right: 1vw;
+  cursor: pointer;
+  width: 10vw;
+  z-index: 10;
+}
+
+      .probability {
+          font-size: 200%;
+          position: relative;
+          display: inline-block;
+          font-weight: bold;
+          padding: 10px 10px 10px 10px;
+          text-decoration: none;
+          position: fixed;
+          margin-bottom: 30%;
+}
+
+.select-picture {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  max-width: 480px;
+  max-height: 480px;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: -20px;
+  overflow: hidden;
+  border-style: solid;
+  border-width: 5px;
+  border-radius: 10px;
+  border-color: rgb(255, 255, 255);
+  box-sizing: border-box;
+}
+
+.select-picture img {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+}
+
+.boxtext {
+  display: flex;
+      justify-content: space-evenly;
+      font-size: 200%;
+      padding: 40px 20px;
+      text-decoration: none;
+      background: none;
+      position: fixed;
+      top: 12vw;
+      width: 152.5vw;
+      left: 7vw;
+}
+
+.preview-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preview-img img {
+  max-width: calc(100% - 10px);
+  max-height: calc(100% - 10px);
+  object-fit: contain;
+  border-radius: 5px;
+}
+
+.history {
+  position: fixed;
+  display: inline-block;
+  top: 3.5vw;
+  right: 88vw;
+  opacity: 0.8;
+}
