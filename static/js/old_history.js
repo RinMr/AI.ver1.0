@@ -137,11 +137,11 @@ function filterByDate() {
             const labels = JSON.parse(entry.dataset.labels);
             const emotions = entry.dataset.emotions ? JSON.parse(entry.dataset.emotions) : {};
             const labelOrder = {
-                '猫-怒る': 0, '猫-楽しい': 1, '猫-悲しい': 2,
-                '犬-怒る': 3, '犬-楽しい': 4, '犬-悲しい': 5,
+                'ネコ-怒る': 0, 'ネコ-楽しい': 1, 'ネコ-悲しい': 2,
+                'イヌ-怒る': 3, 'イヌ-楽しい': 4, 'イヌ-悲しい': 5,
                 'ライオン-怒る': 6, 'ライオン-楽しい': 7, 'ライオン-悲しい': 8,
-                '猿-怒る': 9, '猿-楽しい': 10, '猿-悲しい': 11,
-                '狼-怒る': 12, '狼-楽しい': 13, '狼-悲しい': 14
+                'サル-怒る': 9, 'サル-楽しい': 10, 'サル-悲しい': 11,
+                'オオカミ-怒る': 12, 'オオカミ-楽しい': 13, 'オオカミ-悲しい': 14
             };
             const initialProbs = dataProbs.map((prob, index) => ({ label: labels[index], prob }));
             const initialEmotions = Object.keys(labelOrder).map(label => ({
